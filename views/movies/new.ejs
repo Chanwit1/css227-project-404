@@ -1,0 +1,42 @@
+<%- include('../partials/header.ejs') %>
+<div class='container'>
+<form action='/movie' method='POST' enctype="multipart/form-data">
+    <div class="mb-3">
+      <label class="form-label">Statue name</label>
+      <input type="text" class="form-control" name='movie[name]' placeholder='Name'>
+    </div>
+    <div class="mb-3">
+      <label  class="form-label">Image</label>
+      <input type="file" class="form-control" name='image' accept="image/*">
+    </div>
+    <div class="mb-3">
+      <label class="form-label">category</label>
+      <select type="text" id="" class="form-select" name="movie[category]" >
+        <option value="action">action</option>
+        <option value="comedy">comedy</option>
+        <option value="horror">horror</option>
+        <option value="fantasy">fantasy</option>
+      </select>
+    </div>
+    <div class="mb-3">
+      <label class="form-label">imdb</label>
+      <input type="text" class="form-control" name='movie[imdb]' placeholder='Name'>
+    </div>
+    <div class="mb-3">
+      <label class="form-label">Teaser</label>
+      <input type="text" class="form-control" name='movie[teaser]' placeholder='Name'>
+    </div>
+    <div class="mb-3">
+      <label  class="form-label">Description</label>
+      <input type="text" class="form-control" name='movie[desc]' placeholder='Description of your movie.'>
+    </div>
+    <!-- <div class="mb-3">
+      <label class="form-label">url</label>
+      <input type="text" class="form-control" name='collection[name]' placeholder='URl'>
+    </div> -->
+    <button type="submit" class="btn btn-primary">Submit</button>
+    <a href='/movie'>Go back</a>
+  </form>
+</div>
+
+<%- include('../partials/footer.ejs') %>

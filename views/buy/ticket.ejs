@@ -1,0 +1,17 @@
+<%- include('../partials/header.ejs') %>
+
+    <div class="card border-success mb-3" style="max-width: 18rem; ">
+      <div class="card-header bg-transparent border-success" style="background-color: rgb(161, 243, 243);">Ticket</div>
+      <div class="card-body text-success">
+        <img src="<%= movie.image %>" class="card-img-top" alt="..." style="width: 200px; height: 200px;">
+        <h5 class="card-title" style="margin-top: 5px; "><%=movie.name%></h5>
+        <p class="card-text"></p>
+        <p class="card-text"><%= ticket.dateb %></p>
+        <p class="card-text"><%= ticket.theaterb %></p>
+        <p class="card-text"><%= ticket.timeb %></p>
+        <p class="card-text"><%= ticket.sit %></p>
+      </div>
+      <div class="card-footer bg-transparent border-success" style="background-color: rgb(161, 243, 243);"><%=ticket.name%></div>
+    </div>
+      
+<%- include('../partials/footer.ejs') %>

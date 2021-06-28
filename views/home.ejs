@@ -1,0 +1,68 @@
+<%- include('partials/header.ejs') %>
+<link rel='stylesheet' href='/stylesheets/home.css'>
+<div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel" style="margin-top: 1px;">
+    <div class="carousel-indicators">
+      <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+      <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
+      <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
+    </div>
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+        <img src="https://www.ktc.co.th/sites/ktc/image/1545255199927/mcxsf-book-sf-cinema_promo.jpg" style="max-width: 100%; max-height: 500px;"class="d-block w-100" alt="...">
+        <div class="carousel-caption d-none d-md-block">
+          <h5>First slide label</h5>
+          
+        </div>
+      </div>
+      <div class="carousel-item">
+        <img src="https://www.ktc.co.th/pub/media/Promotion/Book/cinema/jcb-platinum-2021-major-promo.jpg" style="max-width: 100%; max-height: 500px;" class="d-block w-100" alt="...">
+        <div class="carousel-caption d-none d-md-block">
+          <h5>Second slide label</h5>
+         
+        </div>
+      </div>
+      <div class="carousel-item">
+        <img src="https://www.checkraka.com/uploaded/knowledge/article/1650304/movie-pro-credit-card_900x470.png" style="max-width: 100%; max-height: 500px;" class="d-block w-100" alt="...">
+        <div class="carousel-caption d-none d-md-block">
+          <h5>Third slide label</h5>
+          
+        </div>
+      </div>
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
+  </div>
+
+  <h1 style="text-align: center;margin-top: 50px; color: rgb(79, 129, 236);
+    text-shadow: 0 1px 0 rgb(51, 47, 47) ">BOX OFFICE</h1>
+  <div class="album py-5 bg-light">
+    <div class="container" style="width: 960px;">
+      <div class="row row-cols-1 row-cols-sm-2 row-cols-md-4 g-3" >
+        <% movie.forEach(function(movie){  %>
+        <div class="col">
+          <div class="card shadow-sm">
+            <img src='<%= movie.image %>' class='card-img-top' style="height: 350px; width: 220px;">
+
+            <div class="card-body">
+               <h5 class = 'card-title' style="color: red;text-shadow: 0 1px 0 rgb(37, 36, 36)"><%= movie.name %></h5>
+              <p class="card-text">IMDb:  <%= movie.imdb %>/10</p>
+              <div class="d-flex justify-content-between align-items-center">
+                <div class="btn-group" style="background-color: rgb(158, 211, 247);">
+                  <a href="/movie/<%= movie._id %>" class="btn btn-sm btn-outline-secondary" style="color: black;text-shadow: 0 1px 0 rgb(238, 234, 234)">View</a>
+                  <!-- <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button> -->
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <% }); %>
+      </div>
+    </div>
+  </div
+<%- include('partials/footer.ejs') %>

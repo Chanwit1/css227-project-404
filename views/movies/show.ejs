@@ -1,0 +1,50 @@
+<%- include('../partials/header.ejs') %>
+
+<div class="card mb-3" style="max-width: 800px;height: auto; margin-left: 300px; margin-top: 50px; background-color: rgb(245, 233, 218);">
+    <div class="row g-0">
+      <div >
+        <iframe src="<%=movie.teaser%>" style="width: 800px;height: 400px;" >
+        </iframe>
+      </div>
+      <div class="col-md-6">
+        <img src="<%= movie.image %>"  style="max-width: 300px; max-height: 400px;" alt="...">
+      </div>
+      <div class="col-md-6">
+        <div class="card-body">
+          
+          <h3 class="card-title">Title:  <%=movie.name%></h3>
+          <h3 class="card-title">Genre:  <%=movie.category%></h3>
+          <h3 class="card-title">IMDb :  <%=movie.imdb%></h3>
+          <p class="card-text">  desc :  <%= movie.desc %></p>
+
+          <!-- <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p> -->
+        </div>
+      </div>
+    </div>
+</div>
+<p style="margin-left: 300px;"><a class="btn btn-primary" href = '/buy/<%= movie._id %>' >Buy now</a></p>   
+<hr>
+<!-- <p>Submitted by <%= movie.author.username %></p> -->   
+
+<% if(currentUser && movie.author.id.equals(currentUser._id) || currentUser && currentUser.isAdmin){ %>
+    <a href='/movie/<%= movie._id %>/edit' class="btn btn-warning">Edit</a>
+    <form id = 'delete-form' action = '/movie/<%= movie._id %>?_method=DELETE' method='POST'>
+        <button type='submit' class="btn btn-danger">Delete</button>
+    </form>
+ <% } %>   
+ <p style="margin-left: 300px;"><a class="btn btn-primary" href = '/movie/<%= movie._id %>/comments/new'>Add new comment</a></p>   
+<% movie.comments.forEach(function(comment){ %>
+    <p>
+        <strong><%= comment.author.username %></strong> - <%= comment.text %>
+    </p>   
+    <% if(currentUser && comment.author.id.equals(currentUser._id) || currentUser && currentUser.isAdmin){ %>
+        <a href='/movie/<%= movie._id %>/comments/<%= comment._id %>/edit' class="btn btn-warning">Edit</a>
+        <form id = 'delete-form' action = '/movie/<%= movie._id %>/comments/<%= comment._id %>?_method=DELETE' method='POST'>
+            <button type='submit' class="btn btn-danger">Delete</button>
+        </form>
+     <% } %>   
+<% }); %>
+
+
+
+<%- include('../partials/footer.ejs') %>

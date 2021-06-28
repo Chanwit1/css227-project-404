@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>CWmovies</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
+    <link rel='stylesheet' href='/stylesheets/main.css'>
+  </head>
+  <style>
+    body{
+      background-color: rgb(213, 213, 238);
+    }
+  </style>
+<body>  
+
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container-fluid" style="background-color: rgb(152, 173, 171);">
+      <a class="navbar-brand" href="/" style="margin-left: 25px;">CMOVIES</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent" >
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0" >
+           <li class="nav-item">
+            <a class="nav-link active" aria-current="page"  href="/">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/movie">Movies</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/theater">Theater</a>
+          </li>
+          <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3" action='/movie/search' method='POST'>
+            <input name="search" type="search" class="form-control form-control-dark" placeholder="Search movie" aria-label="Search">
+          </form>
+
+          <% if(!currentUser) {%>
+          <li class="nav-item">
+            <a class="nav-link" id="login" href="/login" >Log in</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/register">Register</a>
+          </li>
+          <% } else { %> 
+            <p>
+              <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="" id="dropdown03" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><%= currentUser.username %></a>
+                <div class="dropdown-menu" aria-labelledby="dropdown03">
+
+                  <a class="dropdown-item" href="/user/<%= currentUser._id %>" style="color: black;"><strong>Profile</strong></a>
+                  <% if(currentUser.isAdmin){ %>
+                  <a class="dropdown-item" href="/movie/new" style="color: black;"><strong>Add movie</strong></a>
+                  <a class="dropdown-item" href="/theater/new" style="color: black;"><strong>Add theater</strong></a>
+                  <% } %>
+                  <a class="dropdown-item" onclick="location.href='/logout'" style="color: rgb(255, 51, 0);">Logout</a>
+                </div>
+              </li>
+            </ul>
+            </p>
+          <% } %>            
+        </ul>
+      </div>
+    </div>
+  </nav>
+  
+<div class='container'>
+  <% if(error && error.length > 0) { %>
+    <div class='alert alert-danger' role ='alert'>
+      <%= error %>
+    </div>
+  <%}%>
+  <% if(success && success.length > 0) { %>
+    <div class='alert alert-success' role ='alert'>
+      <%= success %>
+    </div>  
+  <%}%>
+
+</div>
+
+    

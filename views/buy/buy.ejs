@@ -1,0 +1,92 @@
+<%- include('../partials/header.ejs') %>
+
+<div class="card mb-3" style="max-width: 800px;height: auto; margin-left: 350px; margin-top: 50px;background-color: rgb(245, 233, 218);">
+    <div class="row g-0">
+      <div class="col-md-6">
+        <img src="<%= movie.image %>"  style="max-width: 300px; max-height: 400px;" alt="...">
+      </div>
+      <div class="col-md-6">
+        <div class="card-body">
+          <h3 class="card-title"><%=movie.name%></h3>
+          <h3 class="card-title">Genre:  <%=movie.category%></h3>
+          <h3 class="card-title">IMDb :  <%=movie.imdb%></h3>
+          <p class="card-text">  desc :  <%= movie.desc %></p>
+          <!-- <p class="card-text"><%= movie.desc %></p> -->
+          <!-- <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p> -->
+        </div>
+      </div>
+    </div>
+</div><hr>
+    <div class="mb-3" style="margin-top: 30px;">
+        <p >
+            <label class="form-label" style="margin-left: 300px;color: rgb(79, 129, 236);
+            text-shadow: 0 1px 0 rgb(252, 249, 249) ">เลือกวัน</label>
+            <label class="form-label" style="margin-left: 250px;color: rgb(79, 129, 236);
+            text-shadow: 0 1px 0 rgb(252, 249, 249) ">เลือกโรงภาพยตร์</label>
+            <label class="form-label" style="margin-left: 250px;color: rgb(79, 129, 236);
+            text-shadow: 0 1px 0 rgb(252, 250, 250) ">เลือกเวลา</label>
+        </p>
+  <form action='/ticket/<%= movie._id %>' method='POST'>
+        <input name="buy[Mname]" value="<%= movie.name %>" style="display: none;">
+        <input name="buy[image]" value="<%= movie.image %>" style="display: none;">
+        <select type="text" id="" class="form-select btn btn-primary" name="buy[dateb]" style="width: 250px; margin-left: 250px;" >
+          <option value="emty">---</option>
+          <option value="Sunday , June 27">Sunday , June 27</option>
+          <option value="Monday , June 28">Monday , June 28</option>
+          <option value="Tuesday , June 29">Tuesday , June 29</option>
+          <option value="Wednesday , June 30">Wednesday , June 30</option>
+        </select>
+        <select type="text" id="" class="form-select  btn-primary" name="buy[theaterb]" style="width: 250px; margin-left: 50px;" >
+            <option value="emty">---</option>
+            <option value="Theater1">Theater1</option>
+            <option value="Theater2">Theater2</option>
+            <option value="Theater3">Theater3</option>
+            <option value="Theater4">Theater4</option>
+            
+          </select>
+          <select type="text" id="" class="form-select btn btn-primary" name="buy[timeb]" style="width: 250px; margin-left: 50px;" >
+            <option value="emty">---</option>
+            <option value="09.00">09.00</option>
+            <option value="12.00">12.00</option>
+            <option value="13.00">13.00</option>
+            <option value="15.00">15.00</option>
+          </select>
+    </div><hr>
+
+    <h3 style="margin-left:250px;margin-top: 50px; color: rgb(79, 129, 236);
+    text-shadow: 0 1px 0 rgb(51, 47, 47)  " >เลือกที่นั่ง</h3>
+    
+      <p>
+      <label  style="margin-left:250px; margin-top: 20px;">A</label>  
+      <input class="form-check-input" type="checkbox" value="A1" id="flexCheckDefault" name="buy[sit]" >
+      <input class="form-check-input" type="checkbox" value="A2" id="flexCheckDefault" name="buy[sit]" >
+      <input class="form-check-input" type="checkbox" value="A3" id="flexCheckDefault" name="buy[sit]" >
+      <input class="form-check-input" type="checkbox" value="A4" id="flexCheckDefault" name="buy[sit]" >
+      <input class="form-check-input" type="checkbox" value="A5" id="flexCheckDefault" name="buy[sit]" >
+      <input class="form-check-input" type="checkbox" value="A6" id="flexCheckDefault" name="buy[sit]" >    
+      </p>
+
+      <p>
+        <label  style="margin-left:250px;margin-top: 20px;">B</label>  
+        <input class="form-check-input" type="checkbox" value="B1" id="flexCheckDefault" name="buy[sit]" >
+        <input class="form-check-input" type="checkbox" value="B2" id="flexCheckDefault" name="buy[sit]" >
+        <input class="form-check-input" type="checkbox" value="B3" id="flexCheckDefault" name="buy[sit]" >
+        <input class="form-check-input" type="checkbox" value="B4" id="flexCheckDefault" name="buy[sit]" >
+        <input class="form-check-input" type="checkbox" value="B5" id="flexCheckDefault" name="buy[sit]" >
+        <input class="form-check-input" type="checkbox" value="B6" id="flexCheckDefault" name="buy[sit]">     
+      </p>
+
+      <p>
+        <label  style="margin-left:250px;margin-top: 20px;">C</label>  
+        <input class="form-check-input" type="checkbox" value="C1" id="flexCheckDefault" name="buy[sit]" >
+        <input class="form-check-input" type="checkbox" value="C2" id="flexCheckDefault" name="buy[sit]" >
+        <input class="form-check-input" type="checkbox" value="C3" id="flexCheckDefault" name="buy[sit]" >
+        <input class="form-check-input" type="checkbox" value="C4" id="flexCheckDefault" name="buy[sit]" >
+        <input class="form-check-input" type="checkbox" value="C5" id="flexCheckDefault" name="buy[sit]" >
+        <input class="form-check-input" type="checkbox" value="C6" id="flexCheckDefault" name="buy[sit]" >    
+      </p>
+      <button type="submit" class="btn btn-primary" style="margin-left: 300px; margin-top: 0px;">Submit</button>
+  </form><hr style="margin-top: 20px;"> 
+
+      
+<%- include('../partials/footer.ejs') %>

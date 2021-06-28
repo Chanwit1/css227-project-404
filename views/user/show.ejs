@@ -1,0 +1,38 @@
+<%- include('../partials/header.ejs') %>
+
+<div class="card mb-3" style="max-width: 800px;height: auto; margin-left: 350px; margin-top: 50px;background-color: rgb(225, 248, 204);">
+  <div class="row g-0">
+    <div class="col-md-6">
+      <img src="<%= user.profileImage %>"  style="max-width: 300px; max-height: 400px;" alt="...">
+    </div>
+    <div class="col-md-6">
+      <div class="card-body">
+        <h2><%= user.firstName + ' ' + user.lastName %></h2>
+      <p> 
+          <a href='mailto: <%= user.email %>'> <%= user.email %> </a>
+      </p>
+    </div>
+  </div>
+</div><hr>
+
+
+<h3 style="text-align: center;margin-top: 20px; color: rgb(79, 129, 236);
+text-shadow: 0 1px 0 rgb(247, 245, 245) ">History</h3><hr>
+<% buy.forEach(function(buy){  %>
+    <% if (currentUser.username === buy.name){ %>
+    <div class="card border-success mb-3" style="max-width: 18rem;">
+        <div class="card-header bg-transparent border-success">Ticket</div>
+        <div class="card-body text-success">
+          <img src="<%= buy.image %>" class="card-img-top" alt="..." style="width: 200px; height: 200px;">
+          <h5 class="card-title"><%=buy.Mname%></h5>
+          <p class="card-text"><%= buy.dateb %></p>
+          <p class="card-text"><%= buy.theaterb %></p>
+          <p class="card-text"><%= buy.timeb %></p>
+          <p class="card-text"><%= buy.sit %></p>
+          
+        </div>
+        <div class="card-footer bg-transparent border-success">Footer</div>
+      </div>
+      <%}%>
+    <% }); %>
+<%- include('../partials/footer.ejs') %>

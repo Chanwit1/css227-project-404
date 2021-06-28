@@ -1,0 +1,22 @@
+<%- include('../partials/header.ejs') %>
+<div class='container'>
+<form action='/theater/<%= theater._id %>?_method=PUT' method='POST' enctype="multipart/form-data">
+    <div class="mb-3">
+      <label class="form-label">Theater name</label>
+      <input type="text" class="form-control" name='theater[name]' placeholder='<%= theater.name %>' value = '<%= theater.name %>'>
+    </div>
+    <div class="mb-3">
+      <label  class="form-label">Logo</label>
+      <img src='<%= theater.image %>' width = '300px'>
+      <input type="file" class="form-control" name='image' accept="image/*">
+    </div>
+    <div class="mb-3">
+      <label  class="form-label">Location</label>
+      <input type="text" class="form-control" name='theater[location]' placeholder='<%= theater.location %>' value = '<%= theater.location %>'>
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+    <a href='/theater'>Go back</a>
+  </form>
+</div>
+
+<%- include('../partials/footer.ejs') %>

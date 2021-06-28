@@ -1,0 +1,27 @@
+<%- include('../partials/header.ejs') %>
+
+<div class="card mb-3" style="max-width: 800px;height: auto; margin-left: 350px; background-color: rgb(224, 220, 204); margin-top: 50px;">
+    <div class="row g-0">
+      <div class="col-md-6">
+        <img src="<%= theater.image %>"  style="width: 350px; height: 300px;" alt="...">
+      </div>
+      <div class="col-md-6">
+        <div class="card-body">
+          <h3 class="card-title"><%=theater.name%></h3>
+          <p class="card-text"><%= theater.location %></p>
+          <!-- <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p> -->
+        </div>
+      </div>
+    </div>
+  </div>
+
+<!-- <p>Submitted by <%= theater.author.username %></p> -->
+<% if(currentUser.isAdmin){ %>
+    <a href='/theater/<%= theater._id %>/edit' class="btn btn-warning">Edit</a>
+    <form id = 'delete-form' action = '/theater/<%= theater._id %>?_method=DELETE' method='POST'>
+        <button type='submit' class="btn btn-danger">Delete</button>
+    </form>
+ <% } %>   
+ 
+
+<%- include('../partials/footer.ejs') %>

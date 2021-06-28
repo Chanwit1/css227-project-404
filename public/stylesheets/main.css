@@ -1,0 +1,46 @@
+
+#delete-form {
+    display: inline;
+}
+
+
+/* ========================end nav =================== */
+
+.navbar-nav{
+    margin-left: 250px;
+}
+.nav-item{
+    margin-left: 35px;
+}
+.col-12{
+    margin-left: 25px;
+}
+#login{
+    margin-left: 250px;
+}
+
+@media screen and (max-width: 650px) {
+    .navbar-nav{
+        margin: auto;
+    }
+    .nav-item{
+        margin: auto;
+    }
+    .col-12{
+        margin: auto;
+    }
+    #login{
+        margin: auto;
+    }
+    
+
+}
+.form-select{
+    display: inline;
+}
+
+.form-check-input{
+   
+    width: 50px; height: 50px;
+    margin-left: 50px;
+}
